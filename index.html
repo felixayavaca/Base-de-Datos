@@ -3,37 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Producto</title>
+    <title>Registro de Producto u cuenca</title>
 
     <style>
+        :root {
+            --azul-oscuro: #102f50;
+            --azul: #286eae;
+            --azul-claro: #eaf3fc;
+            --texto: #183653;
+            --texto-suave: #60758a;
+            --borde: #d8e2ec;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: "Trebuchet MS", sans-serif;
         }
 
         body {
-            background: #f2f4f7;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: #f2f6fb;
+            color: var(--texto);
         }
 
-        .contenedor {
-            background: white;
-            width: 90%;
-            max-width: 600px;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .barra-superior {
+            background: var(--azul-oscuro);
+            color: #fff;
+        }
+
+        .barra-interior {
+            width: min(1160px, calc(100% - 48px));
+            height: 76px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .marca {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: inherit;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .marca-icono {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+            background: #438bd0;
+            color: white;
+            font-size: 20px;
+        }
+
+        .marca small {
+            display: block;
+            margin-top: 2px;
+            color: #b7cce0;
+            font-size: 10px;
+            font-weight: normal;
+        }
+
+        .nav-actual {
+            padding: 10px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: #e4effa;
+            font-size: 14px;
+        }
+
+        .pagina {
+            width: min(1160px, calc(100% - 48px));
+            margin: 0 auto;
+            padding: 48px 0 28px;
+        }
+
+        .encabezado-pagina {
+            margin-bottom: 28px;
+        }
+
+        .ruta {
+            margin-bottom: 12px;
+            color: var(--texto-suave);
+            font-size: 13px;
+        }
+
+        .ruta span {
+            padding: 0 7px;
+            color: #9aabba;
         }
 
         h1 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #222;
+            margin-bottom: 8px;
+            color: var(--texto);
+            font-size: 32px;
+        }
+
+        .encabezado-pagina p {
+            color: var(--texto-suave);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .contenido {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+            align-items: start;
+            gap: 24px;
+        }
+
+        .panel-formulario {
+            padding: 28px;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(22, 54, 83, 0.05);
+        }
+
+        .panel-cabecera {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 26px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e8eef4;
+        }
+
+        .numero-seccion {
+            width: 34px;
+            height: 34px;
+            flex: 0 0 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 6px;
+            background: var(--azul-claro);
+            color: var(--azul);
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        h2 {
+            margin: 2px 0 5px;
+            color: var(--texto);
+            font-size: 19px;
+        }
+
+        .panel-cabecera p {
+            color: var(--texto-suave);
+            font-size: 13px;
         }
 
         .campo {
@@ -43,63 +167,222 @@
         label {
             display: block;
             margin-bottom: 8px;
+            color: #29435e;
+            font-size: 14px;
             font-weight: bold;
-            color: #333;
         }
 
         input,
         textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
+            border: 1px solid #cbd8e5;
+            border-radius: 6px;
             outline: none;
+            background: #f8fafc;
+            color: var(--texto);
+            font-size: 15px;
+            transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
         }
 
         input:focus,
         textarea:focus {
-            border-color: #007bff;
+            border-color: #347fc1;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(52, 127, 193, 0.16);
         }
 
         textarea {
-            min-height: 120px;
+            min-height: 104px;
             resize: vertical;
         }
 
+        .acciones {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 2px;
+        }
+
         button {
-            width: 100%;
-            padding: 13px;
+            min-width: 190px;
+            padding: 13px 18px;
             border: none;
-            border-radius: 8px;
-            background: #007bff;
+            border-radius: 6px;
+            background: var(--azul);
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
+            transition: background 160ms ease, transform 160ms ease;
         }
 
         button:hover {
-            background: #0056b3;
+            background: #1b568d;
+            transform: translateY(-1px);
+        }
+
+        .panel-vista {
+            overflow: hidden;
+            border-radius: 8px;
+            background: linear-gradient(155deg, #1d5e96, #102f50 78%);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(16, 47, 80, 0.16);
+        }
+
+        .vista-contenido {
+            min-height: 270px;
+            padding: 24px;
+            background-image: repeating-linear-gradient(135deg, transparent 0 30px, rgba(255, 255, 255, 0.035) 30px 31px, transparent 31px 62px);
+        }
+
+        .vista-etiqueta {
+            display: inline-block;
+            margin-bottom: 42px;
+            color: #bbd9f4;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .vista-contenido h2 {
+            margin-bottom: 12px;
+            color: #fff;
+            font-size: 23px;
+            overflow-wrap: anywhere;
+        }
+
+        .vista-descripcion {
+            min-height: 44px;
+            color: #d7e8f8;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+        }
+
+        .vista-materiales {
+            margin-top: 24px;
+            padding-top: 17px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .vista-materiales strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #bbd9f4;
+            font-size: 11px;
+        }
+
+        .vista-materiales p {
+            color: #fff;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
         }
 
         #resultado {
-            margin-top: 20px;
+            margin-top: 18px;
             padding: 15px;
-            background: #e9f7ef;
-            border-radius: 8px;
+            border: 1px solid #c8def3;
+            border-radius: 6px;
+            background: #eaf3fc;
+            color: #233f5c;
+            line-height: 1.6;
             display: none;
+        }
+
+        .pie-pagina {
+            padding: 24px 0 0;
+            color: #778a9c;
+            font-size: 12px;
+        }
+
+        @media (max-width: 760px) {
+            .pagina {
+                padding-top: 34px;
+            }
+
+            .contenido {
+                grid-template-columns: 1fr;
+            }
+
+            .panel-vista {
+                order: -1;
+            }
+
+            .vista-contenido {
+                min-height: 220px;
+            }
+
+            .vista-etiqueta {
+                margin-bottom: 24px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .barra-interior,
+            .pagina {
+                width: min(100% - 32px, 1160px);
+            }
+
+            .barra-interior {
+                height: 66px;
+            }
+
+            .nav-actual {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+
+            .pagina {
+                padding-top: 28px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .panel-formulario {
+                padding: 20px;
+            }
+
+            .acciones button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="contenedor">
+    <header class="barra-superior">
+        <div class="barra-interior">
+            <a class="marca" href="#" aria-label="Registro de productos, inicio">
+                <span class="marca-icono" aria-hidden="true">R</span>
+                <span>Registro<small>GESTIÓN DE PRODUCTOS</small></span>
+            </a>
+            <span class="nav-actual">Nuevo producto</span>
+        </div>
+    </header>
 
-        <h1>Registro de Producto</h1>
+    <main class="pagina">
+        <section class="encabezado-pagina" aria-labelledby="titulo-pagina">
+            <div class="ruta">Inventario <span>/</span> Nuevo registro</div>
+            <h1 id="titulo-pagina">Registrar producto</h1>
+            <p>Agrega los detalles para crear una nueva ficha en tu inventario.</p>
+        </section>
 
-        <form id="formulario">
+        <div class="contenido">
+            <section class="panel-formulario" id="registro" aria-labelledby="titulo-formulario">
+                <div class="panel-cabecera">
+                    <span class="numero-seccion">01</span>
+                    <div>
+                        <h2 id="titulo-formulario">Información del producto</h2>
+                        <p>Completa los campos para registrar el artículo.</p>
+                    </div>
+                </div>
+
+                <form id="formulario">
 
             <div class="campo">
                 <label for="producto">Producto</label>
@@ -129,32 +412,70 @@
                 ></textarea>
             </div>
 
-            <button type="submit">Guardar Producto</button>
+                    <div class="acciones">
+                        <button type="submit">Guardar producto</button>
+                    </div>
+                </form>
 
-        </form>
+                <div id="resultado" role="status" aria-live="polite"></div>
+            </section>
 
-        <div id="resultado"></div>
+            <aside class="panel-vista" aria-label="Vista previa del producto">
+                <div class="vista-contenido">
+                    <span class="vista-etiqueta">VISTA PREVIA</span>
+                    <h2 id="vista-producto">Nombre del producto</h2>
+                    <p class="vista-descripcion" id="vista-descripcion">La descripción aparecerá aquí.</p>
+                    <div class="vista-materiales">
+                        <strong>MATERIALES</strong>
+                        <p id="vista-materiales">Aún sin especificar</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
 
-    </div>
+        <footer class="pie-pagina">Panel de inventario</footer>
+    </main>
 
     <script>
+        const campos = {
+            producto: document.getElementById("producto"),
+            descripcion: document.getElementById("descripcion"),
+            materiales: document.getElementById("materiales")
+        };
+
+        const vistaPrevia = {
+            producto: document.getElementById("vista-producto"),
+            descripcion: document.getElementById("vista-descripcion"),
+            materiales: document.getElementById("vista-materiales")
+        };
+
+        campos.producto.addEventListener("input", function() {
+            vistaPrevia.producto.textContent = campos.producto.value || "Nombre del producto";
+        });
+
+        campos.descripcion.addEventListener("input", function() {
+            vistaPrevia.descripcion.textContent = campos.descripcion.value || "La descripción aparecerá aquí.";
+        });
+
+        campos.materiales.addEventListener("input", function() {
+            vistaPrevia.materiales.textContent = campos.materiales.value || "Aún sin especificar";
+        });
+
         document.getElementById("formulario").addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const producto = document.getElementById("producto").value;
-            const descripcion = document.getElementById("descripcion").value;
-            const materiales = document.getElementById("materiales").value;
+            const producto = campos.producto.value;
+            const descripcion = campos.descripcion.value;
+            const materiales = campos.materiales.value;
 
             const resultado = document.getElementById("resultado");
 
             resultado.style.display = "block";
 
-            resultado.innerHTML = `
-                <strong>Producto guardado:</strong><br><br>
-                <strong>Producto:</strong> ${producto}<br>
-                <strong>Descripción:</strong> ${descripcion}<br>
-                <strong>Materiales:</strong> ${materiales}
-            `;
+            resultado.replaceChildren();
+            const mensaje = document.createElement("strong");
+            mensaje.textContent = `Producto guardado: ${producto}`;
+            resultado.append(mensaje);
         });
     </script>
 
