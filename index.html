@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Producto u cuenca</title>
+    <title>Registro deasdasdasdasda</title>
 
     <style>
         :root {
@@ -22,39 +22,13 @@
             font-family: "Trebuchet MS", sans-serif;
         }
 
-        html {
-            background: #c9e8f7;
-        }
-
         body {
             min-height: 100vh;
-            position: relative;
-            isolation: isolate;
-            background: transparent;
+            background: #c9e8f7;
             color: var(--texto);
         }
 
-        .fondo-video {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        body::before {
-            position: fixed;
-            inset: 0;
-            z-index: 1;
-            background: rgba(201, 232, 247, 0.35);
-            content: "";
-            pointer-events: none;
-        }
-
         .barra-superior {
-            position: relative;
-            z-index: 2;
             background: var(--azul-oscuro);
             color: #fff;
         }
@@ -104,8 +78,6 @@
         }
 
         .pagina {
-            position: relative;
-            z-index: 2;
             width: min(1160px, calc(100% - 48px));
             margin: 0 auto;
             padding: 48px 0 28px;
@@ -381,10 +353,6 @@
 
 <body>
 
-    <video class="fondo-video" autoplay muted loop playsinline aria-hidden="true">
-        <source src="./imagenes/imagenes/WhatsApp%20Video%202026-10-01%20at%203.23.49%20PM.mp4" type="video/mp4">
-    </video>
-
     <header class="barra-superior">
         <div class="barra-interior">
             <a class="marca" href="#" aria-label="Registro de productos, inicio">
@@ -454,7 +422,7 @@
                 <div class="vista-contenido">
                     <span class="vista-etiqueta">VISTA PREVIA</span>
                     <h2 id="vista-producto">Nombre del producto</h2>
-                    <p class="vista-descripcion" id="vista-descripcion">La descripción no va aparecerá aquí jamas mientras noba sea presidente.</p>
+                    <p class="vista-descripcion" id="vista-descripcion">La descripción aparecerá aquí.</p>
                     <div class="vista-materiales">
                         <strong>MATERIALES</strong>
                         <p id="vista-materiales">Aún sin especificar</p>
@@ -468,9 +436,9 @@
 
     <script>
         const campos = {
-            producto: document.getElementById("producteishon"),
-            descripcion: document.getElementById("descripteishon"),
-            materiales: document.getElementById("materialeishon")
+            producto: document.getElementById("producto"),
+            descripcion: document.getElementById("descripcion"),
+            materiales: document.getElementById("materiales")
         };
 
         const vistaPrevia = {
