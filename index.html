@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Producto</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f2f4f7;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contenedor {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #222;
+        }
+
+        .campo {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #007bff;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9f7ef;
+            border-radius: 8px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>Registro de Producto</h1>
+
+        <form id="formulario">
+
+            <div class="campo">
+                <label for="producto">Producto</label>
+                <input
+                    type="text"
+                    id="producto"
+                    placeholder="Ej: Mesa de madera"
+                    required
+                >
+            </div>
+
+            <div class="campo">
+                <label for="descripcion">Descripción</label>
+                <textarea
+                    id="descripcion"
+                    placeholder="Describe las características del producto..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="campo">
+                <label for="materiales">Materiales</label>
+                <textarea
+                    id="materiales"
+                    placeholder="Ej: Madera, tornillos, barniz..."
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit">Guardar Producto</button>
+
+        </form>
+
+        <div id="resultado"></div>
+
+    </div>
+
+    <script>
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const producto = document.getElementById("producto").value;
+            const descripcion = document.getElementById("descripcion").value;
+            const materiales = document.getElementById("materiales").value;
+
+            const resultado = document.getElementById("resultado");
+
+            resultado.style.display = "block";
+
+            resultado.innerHTML = `
+                <strong>Producto guardado:</strong><br><br>
+                <strong>Producto:</strong> ${producto}<br>
+                <strong>Descripción:</strong> ${descripcion}<br>
+                <strong>Materiales:</strong> ${materiales}
+            `;
+        });
+    </script>
+
+</body>
+</html>
